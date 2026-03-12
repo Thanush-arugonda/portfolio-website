@@ -5,6 +5,7 @@ import HeroSection from "./components/hero-section/page";
 import Projects from "./components/projects/index";
 import Skills from "./components/skills/page";
 import SectionReveal from "./components/SectionReveal";
+import Education from "@/app/components/education/page";
 
 import "./css/card.css";
 export default function Home() {
@@ -15,6 +16,10 @@ export default function Home() {
 
         <SectionReveal>
           <About />
+        </SectionReveal>
+
+        <SectionReveal>
+          <Education />
         </SectionReveal>
 
         <SectionReveal>

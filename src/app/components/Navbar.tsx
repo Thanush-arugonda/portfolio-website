@@ -1,23 +1,31 @@
 "use client";
+
 import img from "@/../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Link as ScrollLink } from "react-scroll";
-
-const navItems = [
-  { label: "About", to: "about" },
-  { label: "Experience", to: "experience" },
-  { label: "Skills", to: "skills" },
-  { label: "Projects", to: "projects" },
-  { label: "Contact", to: "contact" },
-];
+import LanguageToggle from "@/components/ui/language-toggle";
+import { useLanguage } from "@/context/language-context";
+import { translations } from "@/data/translations";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const navItems = [
+    { label: t.nav.about, to: "about" },
+    { label: t.nav.education, to: "education" },
+    { label: t.nav.experience, to: "experience" },
+    { label: t.nav.skills, to: "skills" },
+    { label: t.nav.projects, to: "projects" },
+    { label: t.nav.contact, to: "contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +41,6 @@ const Navbar = () => {
   ) => {
     const isHomePage = pathname === "/";
 
-    // Shared classes for both desktop and mobile
     const baseClasses = isMobile
       ? "block cursor-pointer py-3 text-lg font-semibold transition-all duration-300 border-b border-white/5"
       : "cursor-pointer transition-all duration-300 relative group px-2 py-1 text-sm lg:text-base font-medium";
@@ -89,19 +96,18 @@ const Navbar = () => {
         >
           <Image
             src={img}
-            alt="Abdul Basit"
+            alt="Thanush"
             width={isScrolled ? 50 : 60}
             height={isScrolled ? 50 : 60}
             className="transition-all duration-500"
           />
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => renderLink(item))}
+          <LanguageToggle />
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -141,11 +147,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 md:hidden animate-in slide-in-from-top duration-300">
-          <div className="container mx-auto px-6 py-8 flex flex-col space-y-2">
+          <div className="container mx-auto px-6 py-8 flex flex-col space-y-4">
             {navItems.map((item) => renderLink(item, true))}
+            <div className="pt-4">
+              <LanguageToggle />
+            </div>
           </div>
         </div>
       )}

@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "@/../utils/ScrollToTopButton";
+import { LanguageProvider } from "@/context/language-context";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -16,30 +18,30 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Abdul Basit | Full Stack Developer & AI Automation Expert",
+  title: "Thanush Arugonda | Master's Student In Germany.",
   description:
-    "Explore the portfolio of Abdul Basit, a Professional Full Stack Developer specializing in Next.js, AI Automation, and modern web solutions. Built for performance and user experience.",
+    "Explore the portfolio of Thanush Arugonda, pursuing masters in Artificial Intelligence for Smart Sensors and Actuators",
   keywords: [
-    "Abdul Basit",
+    "Thanush Arugonda",
     "Full Stack Developer",
     "Next.js Portfolio",
     "AI Automation",
-    "Software Engineer",
+    "Master's Student",
     "React Developer",
   ],
-  authors: [{ name: "Abdul Basit" }],
+  authors: [{ name: "Thanush Arugonda" }],
   openGraph: {
-    title: "Abdul Basit | Personal Portfolio",
+    title: "Thanush Arugonda | Personal Portfolio",
     description:
       "Full Stack Developer & AI Automation Expert — Building the future of the web.",
     url: "https://abdulbasit-005.vercel.app",
-    siteName: "Abdul Basit Portfolio",
+    siteName: "Thanush Arugonda Portfolio",
     images: [
       {
         url: "/Website-overview.png",
         width: 1200,
         height: 630,
-        alt: "Abdul Basit Portfolio Overview",
+        alt: "Thanush Arugonda Portfolio Overview",
       },
     ],
     locale: "en_US",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abdul Basit | Full Stack Developer",
+    title: "Thanush Arugonda | Full Stack Developer",
     description: "Building modern web applications and AI automations.",
     images: ["/Website-overview.png"],
   },
@@ -67,12 +69,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main className="text-white">
-          <div className="container">{children}</div>
-        </main>
-        <ScrollToTopButton />
-        <Footer />
+        <LanguageProvider>
+          <Navbar />
+          <main className="text-white">
+            <div className="container">{children}</div>
+          </main>
+          <ScrollToTopButton />
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

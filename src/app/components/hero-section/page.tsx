@@ -11,6 +11,9 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 import Tilt from "react-parallax-tilt";
+import { useLanguage } from "@/context/language-context";
+import { translations } from "@/data/translations";
+import Image from "next/image";
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,22 +117,24 @@ const HeroSection = () => {
         <div className="order-2 lg:order-1 flex flex-col items-start gap-8">
           <div className="flex flex-col gap-4">
             <span className="hero-tag px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold tracking-[0.3em] w-fit">
-              WELCOME TO MY UNIVERSE
+              AI & ML ENTHUSIAST
             </span>
             <h1 className="hero-heading text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
-              Crafting{" "}
+              Hi,{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
-                Digital
+                I'm
               </span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-red-950">
-                Masterpieces
+                Thanush Arugonda
               </span>
             </h1>
             <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
-              I'm{" "}
-              <span className="text-white font-bold">{personalData.name}</span>,
-              a professional
+              Master's Student in Artificial Intelligence for Smart Sensors and
+              Actuators.
+            </p>
+            <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
+              I'm intrested in
               <span
                 className="text-red-500 ml-2 font-bold inline-block min-w-[200px]"
                 ref={designationRef}
@@ -137,8 +142,8 @@ const HeroSection = () => {
                 {personalData.designation}
               </span>
               <br />
-              dedicated to building high-performance, user-centric web
-              applications.
+              Open to Working Student / Internship oppurtunities in AI and
+              Software Development.
             </p>
           </div>
 
@@ -158,20 +163,6 @@ const HeroSection = () => {
               >
                 <BsLinkedin size={24} />
               </Link>
-              <Link
-                href={personalData.leetcode}
-                target="_blank"
-                className="social-icon p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:text-red-500 hover:border-red-500/50 transition-all duration-300 shadow-xl"
-              >
-                <SiLeetcode size={24} />
-              </Link>
-              <Link
-                href={personalData.twitter}
-                target="_blank"
-                className="social-icon p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:text-red-500 hover:border-red-500/50 transition-all duration-300 shadow-xl"
-              >
-                <FaTwitterSquare size={24} />
-              </Link>
             </div>
 
             <div className="hero-cta flex flex-wrap gap-4">
@@ -181,7 +172,7 @@ const HeroSection = () => {
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center gap-2">
-                  Let's Collaborate <RiContactsFill />
+                  Let's Connect <RiContactsFill />
                 </span>
               </Link>
 
@@ -190,8 +181,34 @@ const HeroSection = () => {
                 target="_blank"
                 className="group px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
               >
-                Get Resume{" "}
-                <MdDownload className="group-hover:translate-y-1 transition-transform" />
+                <>
+                  <Image
+                    src="/flags/en.svg"
+                    alt="English CV"
+                    width={22}
+                    height={16}
+                    className="rounded-sm"
+                  />
+                  <span>English CV</span>
+                  <MdDownload className="group-hover:translate-y-1 transition-transform" />
+                </>
+              </Link>
+              <Link
+                href={personalData.resume}
+                target="_blank"
+                className="group px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
+              >
+                <>
+                  <Image
+                    src="/flags/de.svg"
+                    alt="German CV"
+                    width={22}
+                    height={16}
+                    className="rounded-sm"
+                  />
+                  <span>German CV</span>
+                  <MdDownload className="group-hover:translate-y-1 transition-transform" />
+                </>
               </Link>
             </div>
           </div>

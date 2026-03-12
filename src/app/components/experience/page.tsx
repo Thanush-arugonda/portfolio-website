@@ -17,7 +17,7 @@ function Experience() {
         <div className="flex items-center">
           <span className="w-24 h-[2px] bg-gradient-to-r from-transparent to-red-600"></span>
           <span className="bg-[#050505] border border-red-600/30 w-fit text-white p-3 px-8 text-2xl font-bold rounded-full shadow-[0_0_20px_rgba(220,38,38,0.2)]">
-            Professional Journey
+            Education
           </span>
           <span className="w-24 h-[2px] bg-gradient-to-l from-transparent to-red-600"></span>
         </div>
