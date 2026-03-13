@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/dist/SplitText";
 import Link from "next/link";
 import { useRef } from "react";
-import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { FaTwitterSquare } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
@@ -117,7 +117,7 @@ const HeroSection = () => {
         <div className="order-2 lg:order-1 flex flex-col items-start gap-8">
           <div className="flex flex-col gap-4">
             <span className="hero-tag px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-500 text-xs font-bold tracking-[0.3em] w-fit">
-              AI & ML ENTHUSIAST
+              AI | ML | Python
             </span>
             <h1 className="hero-heading text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1]">
               Hi,{" "}
@@ -132,15 +132,6 @@ const HeroSection = () => {
             <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
               Master's Student in Artificial Intelligence for Smart Sensors and
               Actuators.
-            </p>
-            <p className="hero-heading text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed font-medium">
-              I'm intrested in
-              <span
-                className="text-red-500 ml-2 font-bold inline-block min-w-[200px]"
-                ref={designationRef}
-              >
-                {personalData.designation}
-              </span>
               <br />
               Open to Working Student / Internship oppurtunities in AI and
               Software Development.
@@ -152,6 +143,7 @@ const HeroSection = () => {
               <Link
                 href={personalData.github}
                 target="_blank"
+                title="View my GitHub projects"
                 className="social-icon p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:text-red-500 hover:border-red-500/50 transition-all duration-300 shadow-xl"
               >
                 <BsGithub size={24} />
@@ -159,27 +151,35 @@ const HeroSection = () => {
               <Link
                 href={personalData.linkedIn}
                 target="_blank"
+                title="Connect with me on LinkedIn"
                 className="social-icon p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:text-red-500 hover:border-red-500/50 transition-all duration-300 shadow-xl"
               >
                 <BsLinkedin size={24} />
               </Link>
+              <Link
+                href={`mailto:${personalData.email}`}
+                title="Send me an Email"
+                className="social-icon p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:text-red-500 hover:border-red-500/50 transition-all duration-300 shadow-xl"
+              >
+                <BsEnvelope size={24} />
+              </Link>
             </div>
 
-            <div className="hero-cta flex flex-wrap gap-4">
+            <div className="hero-cta flex flex-wrap items-center gap-4">
               <Link
                 href="/#contact"
                 className="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-red-600 to-red-900 text-white font-bold uppercase tracking-wider overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(239,68,68,0.3)]"
               >
                 <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 <span className="relative flex items-center gap-2">
-                  Let's Connect <RiContactsFill />
+                  Contact Me <RiContactsFill />
                 </span>
               </Link>
 
               <Link
                 href={personalData.resume}
                 target="_blank"
-                className="group px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
+                className="group px-2 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
               >
                 <>
                   <Image
@@ -196,7 +196,7 @@ const HeroSection = () => {
               <Link
                 href={personalData.resume}
                 target="_blank"
-                className="group px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
+                className="group px-2 py-3 rounded-2xl border border-white/10 bg-white/5 text-white font-bold uppercase tracking-wider transition-all hover:bg-white/10 hover:border-red-500/50 flex items-center gap-2"
               >
                 <>
                   <Image
@@ -259,16 +259,18 @@ const HeroSection = () => {
                   <div className="flex gap-4">
                     <span className="text-slate-600 italic">03</span>
                     <p className="ml-4">
-                      <span className="text-slate-200">focus:</span>{" "}
-                      <span className="text-red-300">'Fullstack Mastery'</span>,
+                      <span className="text-slate-200">focus:</span> [
+                      <span className="text-red-300">
+                        'Python', 'Machine Learning', 'Deep Learning'
+                      </span>
+                      ],
                     </p>
                   </div>
                   <div className="flex gap-4">
                     <span className="text-slate-600 italic">04</span>
                     <p className="ml-4">
-                      <span className="text-slate-200">skills:</span> [
-                      <span className="text-red-300">'NextJS', 'ML', 'AI'</span>
-                      ],
+                      <span className="text-slate-200">location:</span>
+                      <span className="text-red-300">'Germany'</span>,
                     </p>
                   </div>
                   <div className="flex gap-4">
@@ -281,8 +283,10 @@ const HeroSection = () => {
                   <div className="flex gap-4">
                     <span className="text-slate-600 italic">06</span>
                     <p className="ml-4">
-                      <span className="text-slate-200">motto:</span>{" "}
-                      <span className="text-red-400">"Build with Purpose"</span>
+                      <span className="text-slate-200">status:</span>{" "}
+                      <span className="text-red-400">
+                        "Open to Working Student or Internship Roles"
+                      </span>
                     </p>
                   </div>
                   <div className="flex gap-4">
