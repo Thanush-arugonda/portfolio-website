@@ -4,9 +4,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { SplitText } from "gsap/dist/SplitText";
-import Image from "next/image";
-import Tilt from "react-parallax-tilt";
 import { User, Sparkles } from "lucide-react";
+import { Languages } from "lucide-react";
+
+const languages = [
+  { name: "English", level: "B2" },
+  { name: "German", level: "A2" },
+  { name: "Telugu", level: "Native" },
+  { name: "Hindi", level: "Native" },
+];
 
 function About() {
   useGSAP(() => {
@@ -32,8 +38,8 @@ function About() {
     });
 
     gsap.fromTo(
-      ".about-image-card",
-      { opacity: 0, scale: 0.9, x: 50 },
+      ".languages-card",
+      { opacity: 0, scale: 0.95, x: 50 },
       {
         opacity: 1,
         scale: 1,
@@ -41,7 +47,23 @@ function About() {
         duration: 1.2,
         ease: "power4.out",
         scrollTrigger: {
-          trigger: ".about-image-card",
+          trigger: ".languages-card",
+          start: "top 80%",
+        },
+      },
+    );
+
+    gsap.fromTo(
+      ".language-item",
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".languages-card",
           start: "top 80%",
         },
       },
@@ -99,7 +121,7 @@ function About() {
               </div>
               <div className="w-[1px] h-10 bg-white/10" />
               <div className="flex flex-col">
-                <span className="text-3xl font-black text-white">20+</span>
+                <span className="text-3xl font-black text-white">50+</span>
                 <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">
                   Python Problems solved
                 </span>
@@ -114,42 +136,48 @@ function About() {
             </div>
           </div>
 
-          {/* Right Side: Profile Image with High-End Frame */}
+          {/* Right Side: Languages */}
           <div className="lg:col-span-5 order-1 lg:order-2">
-            <Tilt
-              perspective={1500}
-              glareEnable={true}
-              glareMaxOpacity={0.2}
-              glareColor="#ef4444"
-              scale={1.05}
-              className="about-image-card"
-            >
-              <div className="relative group">
-                {/* Decorative Frames */}
-                <div className="absolute -inset-4 border border-red-500/20 rounded-3xl group-hover:-inset-6 transition-all duration-500 opacity-50" />
-                <div className="absolute -inset-8 border border-red-950/10 rounded-[40px] group-hover:-inset-12 transition-all duration-700 delay-75 opacity-30" />
+            <div className="languages-card relative group p-8 lg:p-10 rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-3xl overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
+                <Sparkles className="w-24 h-24 text-red-500" />
+              </div>
 
-                <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-white/10 shadow-[0_0_50px_rgba(239,68,68,0.15)] bg-[#050505]">
-                  <Image
-                    src={personalData.profile}
-                    fill
-                    alt={personalData.name}
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
+              <div className="flex flex-col gap-6 relative z-10">
+                <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                  Languages &{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800">
+                    Levels
+                  </span>
+                </h3>
 
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60" />
-
-                  <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                    <p className="text-white font-bold text-center tracking-widest uppercase text-xs">
-                      Built with Passion
-                    </p>
-                  </div>
+                <div className="flex flex-col gap-5">
+                  {languages.map((lang) => (
+                    <div
+                      key={lang.name}
+                      className="language-item flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4"
+                    >
+                      <span className="text-white font-semibold text-lg">
+                        {lang.name}
+                      </span>
+                      <span
+                        className={`px-3 py-1 rounded-md text-xs font-bold border ${
+                          lang.level === "Native"
+                            ? "bg-blue-500/20 text-blue-300 border-blue-500/30"
+                            : lang.level.startsWith("C")
+                              ? "bg-green-500/20 text-green-300 border-green-500/30"
+                              : "bg-yellow-500/20 text-yellow-300 border-yellow-500/30"
+                        }`}
+                      >
+                        {lang.level}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </Tilt>
+
+              <div className="absolute w-1 h-20 bg-gradient-to-b from-red-600 to-transparent left-0 top-10 rounded-full" />
+            </div>
           </div>
         </div>
       </div>

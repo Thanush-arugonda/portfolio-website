@@ -12,7 +12,7 @@ export const personalData = {
   description: [
     "I built my technical foundation during my bachelor’s in Computer Science, developing a strong interest in problem-solving and software development. I also gained practical experience through NxtWave’s CCBP 4.0 program, where I learned extensively in Python and frontend technologies, strengthening my skills in full-stack development.",
     "Working on real-world projects enhanced my understanding and sparked a deeper passion for coding and continuous learning. This journey eventually led me to pursue my master's degree in AI for smart sensors and actuators, where I am currently expanding my knowledge in intelligent systems and emerging technologies. ",
-    "Beyond my academics, I enjoy experimenting with new recipes and unwinding with movies and web series. I'm also passionate about capturing moments through photography and cinematic videography. During my travels, I love recording clips and transforming them into visually engaging edits with trending audio -- preserving memories creatively through my mobile lens.",
+    "Beyond my academics, I'm passionate about capturing moments through photography and cinematic videography. During my travels, I love recording clips and transforming them into visually engaging edits with trending audio -- preserving memories creatively through my mobile lens.",
     "I am eager to apply my skills in AI, full-stack development, and intelligent systems to innovative projects and professional opportunities.",
   ],
   email: "thanusharugonda@gmail.com",
